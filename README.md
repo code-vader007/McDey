@@ -1,3 +1,9 @@
+## Welcome to McDey
+
+A place where burger is served and created by React. This is the basic version of the UI which explores states and components and rendering in depth to give the most delicious burger experience.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
