@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
+//The main react app execution file which runs when the development server is run from the react app
+
+import Layout from './components/Layout/Layout'; //The main component for the app is the layout component which covers the whole pan of the app.
+import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';//The burgerbuilder component which is the main UI of the app and is enclosedby layout.
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Layout>                    
+            <BurgerBuilder/>        
+        </Layout>
       </div>
     );
   }
