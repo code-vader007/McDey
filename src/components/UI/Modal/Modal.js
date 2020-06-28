@@ -1,25 +1,37 @@
 
 
 //The modal component which shows the animation of the backdrop and the invoie popping down
-import React from 'react'
-import Auxi from '../../../hoc/Auxi'
+import React, { Component } from 'react';
 
-import BackDrop from '../BackDrop/BackDrop'
+import './Modal.css.css';
+import Aux from '../../../hoc/Auxi';
+import Backdrop from '../BackDrop/BackDrop';
 
-import './Modal.css.css'
-const modal =(props)=>(
-    <Auxi>
-    <BackDrop show={props.show} clicked={props.modalClosed}/>
-    <div 
-    className={'Modal'}
-    style={{
-        transform:props.show ? 'translateY(0)':'translateY(-100vh)',
-        opacity:props.show ? '1':'0'
-    }}
-    >
-        {props.children}
-    </div>
-    </Auxi>
-)
+class Modal extends Component {
 
-export default modal;
+    shouldComponentUpdate ( nextProps, nextState ) {
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
+    }
+
+    componentWillUpdate () {
+        console.log('[Modal] WillUpdate');
+    }
+
+    render () {
+        return (
+            <Aux>
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+                <div
+                    className={'Modal'}
+                    style={{
+                        transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                        opacity: this.props.show ? '1' : '0'
+                    }}>
+                    {this.props.children}
+                </div>
+            </Aux>
+        )
+    }
+}
+
+export default Modal;
