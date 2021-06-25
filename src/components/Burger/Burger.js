@@ -1,30 +1,27 @@
-
-//The whole burger stateless component.
-
 import React from 'react';
-import './Burger.css'
 
-import Ingridients from './Ingridients/Ingridients'
-const burger=(props)=>{
-    
-    let transformed=Object.keys(props.ingridients).map(ig=>{
-        return [...Array(props.ingridients[ig])].map((_,i)=>{
-            return <Ingridients key={ig+i} type={ig} />;
-        });
-    })
-    .reduce((arr,el)=>{
-        return arr.concat(el);
-    },[]);
-    if(transformed.length===0){
-        transformed=<p>Welcome to McDey. Add your taste</p>
+import classes from './Burger.css';
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+
+const burger = ( props ) => {
+    let transformedIngredients = Object.keys( props.ingredients )
+        .map( igKey => {
+            return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {
+                return <BurgerIngredient key={igKey + i} type={igKey} />;
+            } );
+        } )
+        .reduce((arr, el) => {
+            return arr.concat(el)
+        }, []);
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients!</p>;
     }
-    return(
-            <div className={'Burger'}>
-                <Ingridients type='bread-top'/>
-                {transformed}
-                <Ingridients type='bread-bottom'/>
-            </div>
-    
+    return (
+        <div className={classes.Burger}>
+            <BurgerIngredient type="bread-top" />
+            {transformedIngredients}
+            <BurgerIngredient type="bread-bottom" />
+        </div>
     );
 };
 

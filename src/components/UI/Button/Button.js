@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import './Button.css.css'
+import classes from './Button.css';
 
-const button=(props)=>(
-
-    <button onClick={props.clicked} className={['Button',props.btnType].join(' ')}>{props.children}</button>
+const button = (props) => (
+    <button
+        disabled={props.disabled}
+        className={[classes.Button, classes[props.btnType]].join(' ')}
+        onClick={props.clicked}>{props.children}</button>
 );
 
 export default button;
-
-
-//The custom button stateless component
